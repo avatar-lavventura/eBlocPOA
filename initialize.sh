@@ -1,13 +1,11 @@
 #!/bin/bash
 
-sudo killall geth
-eblocPath="$PWD"
-geth --datadir="$eblocPath/private" init custom.json
+ebloc_path="$PWD"
+var=$(echo $ebloc_path | sed 's/\//\\\//g')
 
-var=$(echo $eblocPath | sed 's/\//\\\//g')
-sed -i.bak "s/^\(DATADIR=\).*/\1\"$var\"/" server.sh && rm server.sh.bak
-sed -i.bak "s/^\(DATADIR=\).*/\1\"$var\"/" client.sh && rm client.sh.bak
-sed -i.bak "s/^\(DATADIR=\).*/\1\"$var\"/" stats.sh  && rm stats.sh.bak
+sed -i.bak "s/^\(DATADIR=\).*/\1\"$var\"/" config.sh && rm -f config.sh.sh.bak
+sed -i.bak "s/^\(DATADIR=\).*/\1\"$var\"/" config.sh && rm -f config.sh.sh.bak
+sed -i.bak "s/^\(DATADIR=\).*/\1\"$var\"/" config.sh && rm -f config.sh.sh.bak
 
 echo -e "\nPlease enter name for eBloc Network Status:"
 read var
@@ -26,6 +24,4 @@ if [[ $var == *\'* ]]; then
     exit
 fi
 
-sed -i.bak "s/^\(NAME=\).*/\1\"$var\"/" stats.sh && rm stats.sh.bak
-
-# npm install
+sed -i.bak "s/^\(NAME=\).*/\1\"$var\"/" config.sh && rm -f config.sh.bak

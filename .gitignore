@@ -1,2 +1,17 @@
+*.txt~
+
+*.js~
+
+*.py~
+
+*.sh~
+
+\#*
+
+eth-net-intelligence-api
 
 *.out
+
+pass.js
+
+config.sh
